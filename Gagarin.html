@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Юрий Алексеевич Гагарин — первый в космосе</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Merriweather', Georgia, serif;
+            background: linear-gradient(145deg, #f5f7fc 0%, #eef2f8 100%);
+            color: #1a2a3f;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0b2b44, #1a4d6b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            text-shadow: 2px 2px 12px rgba(0,0,0,0.05);
+        }
+
+        .hero .sub {
+            font-size: 1.2rem;
+            color: #2c5a7a;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        .annotation {
+            background: rgba(255,255,240,0.7);
+            backdrop-filter: blur(2px);
+            border-left: 6px solid #f3a712;
+            padding: 1.5rem 2rem;
+            border-radius: 32px;
+            box-shadow: 0 12px 24px -12px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #1e3a4d;
+        }
+
+        .annotation p {
+            margin-bottom: 0.8rem;
+        }
+        
+        /* Стиль для кнопки-ссылки */
+        .direct-link {
+            display: inline-block;
+            background: linear-gradient(95deg, #1e5a7d, #0e3b55);
+            color: white !important;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 0.85rem 2rem;
+            border-radius: 60px;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            transition: all 0.25s ease;
+            box-shadow: 0 6px 14px rgba(0,20,40,0.25);
+            border: 1px solid rgba(255,255,200,0.3);
+            font-size: 1rem;
+            letter-spacing: 0.3px;
+        }
+        
+        .direct-link:hover {
+            background: linear-gradient(95deg, #0f4a6e, #072b3f);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 22px rgba(0,0,0,0.2);
+            text-decoration: underline;
+        }
+        
+        .direct-link:active {
+            transform: translateY(1px);
+        }
+
+        .blocks-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .block-card {
+            background: white;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px -15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.25s ease, box-shadow 0.3s;
+        }
+
+        .block-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 28px 40px -18px rgba(0, 0, 0, 0.2);
+        }
+
+        .block-header {
+            background: #f0f4fa;
+            padding: 1.2rem 2rem;
+            border-bottom: 2px solid #cbdbe6;
+        }
+
+        .block-header h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #0e3b55;
+            letter-spacing: -0.3px;
+        }
+
+        .block-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            padding: 2rem;
+        }
+
+        .text-part {
+            flex: 2;
+            min-width: 220px;
+        }
+
+        .text-part p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: #2d3e50;
+        }
+
+        .facts {
+            background: #f8f3e8;
+            border-radius: 28px;
+            padding: 1rem 1.5rem;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            border-left: 4px solid #f3a712;
+        }
+
+        .facts strong {
+            color: #c4450c;
+        }
+
+        .media-part {
+            flex: 1.2;
+            min-width: 180px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .img-figure {
+            background: #fef9ef;
+            border-radius: 24px;
+            overflow: hidden;
+            text-align: center;
+            padding: 0.8rem 0.5rem;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+        }
+
+        .img-figure img {
+            width: 100%;
+            max-height: 180px;
+            object-fit: cover;
+            border-radius: 20px;
+            display: block;
+            margin-bottom: 0.5rem;
+            background: #e9ecf0;
+        }
+
+        .img-caption {
+            font-size: 0.8rem;
+            color: #4f6f8f;
+            font-style: italic;
+        }
+
+        .extra-block {
+            margin-top: 3rem;
+            background: linear-gradient(115deg, #162b38 0%, #0f2c38 100%);
+            color: #f0f3f5;
+            border-radius: 48px;
+            padding: 2rem 2rem;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.3);
+        }
+
+        .extra-block h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            border-left: 5px solid #f3a712;
+            padding-left: 1rem;
+        }
+
+        .extra-block p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .song-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .song-badge {
+            background: #2e546a;
+            padding: 0.5rem 1.2rem;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #5a6e7c;
+            border-top: 1px solid #cddfe7;
+            padding-top: 2rem;
+        }
+
+        @media (max-width: 780px) {
+            .block-content {
+                flex-direction: column;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .block-header h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1>Юрий Алексеевич Гагарин</h1>
+        <div class="sub">«Дорога в космос — наша общая мечта, ставшая реальностью»</div>
+    </div>
+
+    <!-- Аннотация: вводный текст + АКТИВНАЯ ССЫЛКА НА САЙТ -->
+    <div class="annotation">
+        <p>🌟 <strong>Виртуальный познавательный контент</strong> приглашает вас прикоснуться к истории первого полёта человека за пределы Земли. А знаете ли вы, что полёт Юрия Гагарина длился всего 108 минут, но навсегда изменил мировую науку и самосознание человечества?</p>
+        <p>🚀 Этот проект поможет узнать, как простой русский парень из деревни Клушино стал символом отваги и прогресса. Мы раскроем не только факты легендарного старта «Востока-1», но и покажем, как подвиг Гагарина повлиял на культуру, патриотизм и международное сотрудничество.</p>
+        <p>📡 От исторического «Поехали!» до современных песен о космосе — здесь вы найдете уникальные факты, редкие фото и вдохновляющие истории. Погрузитесь в эпоху космической гонки, узнайте о неизвестных деталях подготовки и о том, почему улыбка Гагарина покорила миллионы сердец.</p>
+        
+        <!-- === ГЛАВНАЯ ССЫЛКА НА ВАШ САЙТ (ТЕПЕРЬ РАБОЧАЯ) === -->
+        <div style="text-align: center; margin: 0.5rem 0 0.2rem;">
+            <a href="https://goo.su/i5RzO" class="direct-link" target="_blank" rel="noopener noreferrer">
+                🚀 ПЕРЕЙТИ НА ОСНОВНОЙ САЙТ ПРОЕКТА → 
+            </a>
+            <p style="font-size: 0.8rem; margin-top: 10px; color: #2d5f7e;">Нажмите, чтобы узнать ещё больше о космическом подвиге и наследии Гагарина</p>
+        </div>
+    </div>
+
+    <div class="blocks-grid">
+        <!-- БЛОК 1. Путь к звёздам: детство и становление -->
+        <div class="block-card">
+            <div class="block-header">
+                <h2>🌱 1. «Земля зовёт»: от литейщика до лётчика</h2>
+            </div>
+            <div class="block-content">
+                <div class="text-part">
+                    <p>Юрий Гагарин родился 9 марта 1934 года в деревне Клушино, Гжатский район. Во время войны его семья пережила оккупацию, а дом заняли фашисты, но воля к жизни и учебе осталась несгибаемой. После школы Юрий поступил в Люберецкое ремесленное училище, затем — в индустриальный техникум в Саратове. Именно там он впервые поднялся в небо на спортивном самолёте Як-18. Любовь к авиации стала судьбоносной.</p>
+                    <div class="facts">
+                        <strong>✈ Интересный факт:</strong> Гагарин был невысокого роста — 157 см, что помогло ему идеально подойти для первых космических кресел. А ещё он обожал спорт: играл в баскетбол, волейбол и был капитаном хоккейной команды.
+                    </div>
+                </div>
+                <div class="media-part">
+                    <div class="img-figure">
+                        <img src="https://ndtp.by/wp-content/uploads/2022/12/1%D0%9A%D0%B0%D0%BA-%D1%8D%D1%82%D0%BE-%D0%B1%D1%8B%D0%BB%D0%BE_-%D0%AE%D1%80%D0%B8%D0%B9-%D0%93%D0%B0%D0%B3%D0%B0%D1%80%D0%B8%D0%BD.jpg" alt="Юрий Гагарин в молодости в летной форме" loading="lazy" onerror="this.src='https://via.placeholder.com/400x240?text=Гагарин+в+молодости'">
+                        <div class="img-caption">Юрий Гагарин, 1955 год — курсант авиационного училища (архив)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- БЛОК 2. «Поехали!» – 108 минут, изменившие мир -->
+        <div class="block-card">
+            <div class="block-header">
+                <h2>🚀 2. 108 минут бессмертия: полёт «Востока-1»</h2>
+            </div>
+            <div class="block-content">
+                <div class="text-part">
+                    <p>12 апреля 1961 года в 09:07 по московскому времени с космодрома Байконур стартовала ракета-носитель «Восток». Гагарин произнес легендарное «Поехали!», которое стало символом отваги. Корабль совершил один виток вокруг Земли, максимальная высота составила 327 км. После отделения спускаемого аппарата Гагарин катапультировался на высоте 7 км и приземлился на парашюте у деревни Смеловка Саратовской области. Тот день назвали началом космической эры человечества.</p>
+                    <div class="facts">
+                        <strong>🌍 Мировое значение:</strong> полёт Гагарина доказал, что человек способен выжить и работать в невесомости, открыв дорогу лунным программам и МКС. СССР одержал решающую победу в космической гонке, а Юрий стал героем планеты.
+                    </div>
+                </div>
+                <div class="media-part">
+                    <div class="img-figure">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Gagarin_Capsule.jpg/250px-Gagarin_Capsule.jpg" alt="Космический корабль Восток-1" loading="lazy">
+                        <div class="img-caption">Капсула «Востока-1» (экспонат музея)</div>
+                    </div>
+                    <div class="img-figure">
+                        <img src="https://cs12.pikabu.ru/post_img/2021/04/13/5/1618300769187685141.webp" alt="Гагарин в Швеции, 1964" loading="lazy">
+                        <div class="img-caption">Гагарин во время международного турне — посол мира (Швеция, 1964)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- БЛОК 3. Мировая слава и миссия доброй воли -->
+        <div class="block-card">
+            <div class="block-header">
+                <h2>🌏 3. Гражданин Вселенной: триумфальные поездки</h2>
+            </div>
+            <div class="block-content">
+                <div class="text-part">
+                    <p>После возвращения на Землю Гагарина ждал невероятный приём: миллионы людей выходили на улицы Москвы. Но самое важное — полковник Гагарин совершил турне по более чем 30 странам: Чехословакия, Болгария, Англия, Финляндия, Египет, Япония, Индия, Бразилия и даже Австралия. Везде его встречали как национального героя, а королева Елизавета II сделала исключение и сфотографировалась с ним без перчаток. Юрий стал мостом между государствами в разгар Холодной войны.</p>
+                    <div class="facts">
+                        <strong>🔭 Курьёз:</strong> в Египте космонавта приветствовали криками «Гагарин! Га-га-рин!», а в Японии он посадил дерево мира, которое растет до сих пор.
+                    </div>
+                </div>
+                <div class="media-part">
+                    <div class="img-figure">
+                        <img src="https://roscult.org/wp-content/uploads/2024/03/yurij-gagarin-1.jpeg" alt="Гагарин с орденом Ленина" loading="lazy">
+                        <div class="img-caption">Парадный портрет героя СССР, 1963 год (фото: РИА Новости)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- БЛОК 4. Наследие и память: полёт в бессмертие -->
+        <div class="block-card">
+            <div class="block-header">
+                <h2>🕯️ 4. Звезда по имени Гагарин: память навеки</h2>
+            </div>
+            <div class="block-content">
+                <div class="text-part">
+                    <p>Юрий Гагарин трагически погиб 27 марта 1968 года во время тренировочного полёта на МиГ-15УТИ. Ему было всего 34 года. Но его наследие неугасимо: в честь Гагарина названы кратер на Луне, астероид, города, улицы, самолёты. Его имя носит Центр подготовки космонавтов в Звёздном городке. Каждый год 12 апреля во всём мире отмечают День космонавтики и Международный день полёта человека в космос. Улыбка первого космонавта навсегда осталась символом мечты, ставшей реальностью.</p>
+                    <div class="facts">
+                        <strong>🏅 Золотая медаль:</strong> Гагарин был награждён высшими орденами многих государств, а также получил титул «Герой Советского Союза» и «Лётчик-космонавт СССР».
+                    </div>
+                </div>
+                <div class="media-part">
+                    <div class="img-figure">
+                        <img src="https://rg.ru/uploads/images/207/42/08/RIAN_5842910.HR.ru.jpg" alt="Памятник Гагарину в Москве" loading="lazy">
+                        <div class="img-caption">Монумент Юрию Гагарину на Ленинском проспекте, Москва</div>
+                    </div>
+                    <div class="img-figure">
+                        <img src="https://www.rabochy-put.ru/uploads/posts/2011-07/1311837135_img_9902.jpg" alt="Звездный городок, кабинет Гагарина" loading="lazy">
+                        <div class="img-caption">Мемориальный кабинет Гагарина в Звёздном городке</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ДОПОЛНИТЕЛЬНЫЙ БЛОК (тематика патриотизма в песнях о космосе) -->
+    <div class="extra-block">
+        <h3>🎶 Патриотизм в песнях о космосе: голос эпохи</h3>
+        <p>Подвиг Гагарина породил волну патриотического вдохновения в музыке, литературе и искусстве. Ещё в 1961 году появились легендарные песни: «Знаете, каким он парнем был!» (композитор Александра Пахмутова, стихи Николая Добронравова), а также «Созвездие Гагарина» и «Трава у дома» («Земля в иллюминаторе») группы «Земляне», ставшая гимном космических исследований. Эти композиции воспевали не только гордость за страну, но и единство народа перед бескрайними просторами Вселенной. Песни о Гагарине и космосе объединяли поколения, учили смелости, любви к Родине и вере в науку. Даже сегодня «Поехали!» звучит в рок-балладах и хитах — патриотический импульс 1961 года живёт в каждой ноте.</p>
+        <div class="song-list">
+            <span class="song-badge">«Знаете, каким он парнем был»</span>
+            <span class="song-badge">«Трава у дома» (Земляне)</span>
+            <span class="song-badge">«Нежность» (Пахмутова — Гребенников)</span>
+            <span class="song-badge">«Я — Земля» (песня, посвящённая первому полёту)</span>
+            <span class="song-badge">«Юрий Гагарин» (современные батлы)</span>
+        </div>
+        <p style="margin-top: 1rem;">✨ Благодаря музыке патриотический образ Гагарина перешагнул границы: в США и Европе выходили джазовые композиции «Gagarin’s Orbit», а в космосе постоянно звучат мелодии, написанные в честь нашего соотечественника. Песни о космосе стали культурным кодом, который показывает: гордость за героев — универсальный язык человечества.</p>
+    </div>
+
+    <!-- дополнительная фотогалерея -->
+    <div style="margin: 2.5rem 0 0.5rem;">
+        <h3 style="font-size: 1.6rem; font-weight: 500; border-left: 5px solid #f3a712; padding-left: 1rem; margin-bottom: 1.2rem;">📸 Мгновения истории: редкие кадры</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap: 1rem;">
+            <div class="img-figure">
+                <img src="https://retroportal.ru/gagarin/gagarin_pered_vhodom_v_raketu.jpg" alt="Гагарин в скафандре перед стартом" loading="lazy">
+                <div class="img-caption">12 апреля 1961: Гагарин перед посадкой в «Восток»</div>
+            </div>
+            <div class="img-figure">
+                <img src="https://rsvk.cz/wp-content/uploads/2026/04/02-korolev-1.webp" alt="Гагарин и Королев" loading="lazy">
+                <div class="img-caption">Сергей Королёв и Юрий Гагарин на Байконуре</div>
+            </div>
+            <div class="img-figure">
+                <img src="https://ic.pics.livejournal.com/pro100_mica/12814609/4657127/4657127_1000.png" alt="Гагарин на Красной площади" loading="lazy">
+                <div class="img-caption">Встреча на Красной площади, 14 апреля 1961 г.</div>
+            </div>
+            <div class="img-figure">
+                <img src="https://lh6.googleusercontent.com/proxy/qFY2ki1NxLowhxJe4Yqk2Znl3NYlurKPSdBQ7zECk4Sf5uTfDdYzuuYy7g3nek-ZbG7ks3nhAAK6OzAqJWG03zEtipbA-DD3FbWS4BGSjf3hCT8byzHctQs" alt="Мемориальная доска" loading="lazy">
+                <div class="img-caption">Памятная табличка в Звёздном городке</div>
+            </div>
+            <div class="img-figure">
+                <img src="https://cdn.tvc.ru/pictures/o/458/693.jpg" alt="Гагарин в форме полковника" loading="lazy">
+                <div class="img-caption">1965 год, знаменитая улыбка Гагарина</div>
+            </div>
+            <div class="img-figure">
+                <img src="https://img.gazeta.ru/files3/126/20852126/photo_2025-04-09_11-51-43-pic_32ratio_1200x800-1200x800-44271.jpg" alt="Астероид имени Гагарина" loading="lazy">
+                <div class="img-caption">Астероид 1772 Gagarin — небесная дань</div>
+            </div>
+            <div class="img-figure">
+                <img src="https://artemjew.ru/wp-content/uploads/2022/05/gagarin_start.jpg" alt="Пусковая площадка Гагарина" loading="lazy">
+                <div class="img-caption">Стартовая площадка «Гагаринский старт»</div>
+            </div>
+            <div class="img-figure">
+                <img src="https://s09.stc.yc.kpcdn.net/share/i/12/13047322/wr-960.webp" alt="Гагарин с семьей" loading="lazy">
+                <div class="img-caption">Юрий Гагарин с супругой Валентиной и дочерьми</div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>© Виртуальный познавательный контент о Юрии Гагарине. Все исторические факты и иллюстрации приведены на основе открытых архивных данных и достоверных источников.<br>
+        «Цель контента — показать мировое значение подвига Гагарина, сохранить память и патриотический дух первооткрывателей космоса»</p>
+    </footer>
+</div>
+</body>
+</html>
